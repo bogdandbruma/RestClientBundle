@@ -20,7 +20,7 @@ class RestAdapter implements AdapterInterface
         $this->requestBuilder = $requestBuilder;
     }
 
-    public function call($wrappedClass, $method, array $params = array())
+    public function call(string $wrappedClass,string $method, array $params = array())
     {
         $keyValueParameters = $this->getKeyValueMethodParams($wrappedClass, $method, $params);
         $endpoint =  $this->endpointCollection->get($wrappedClass, $method);
