@@ -5,43 +5,43 @@ services:
     cos_rest_client.endpoint_loader:
         class: Cos\RestClientBundle\Endpoint\EndpointLoader
         arguments: ["@cos_rest_client.annotation_reader.default", "@cos_rest_client.endpoint_collection", "@cos_rest_client.endpoint_factory", "%cos_rest_client.clients%"]
-        public: false
+        public: true
 
     cos_rest_client.endpoint_collection:
         class: Cos\RestClientBundle\Endpoint\EndpointCollection
-        public: false
+        public: true
 
     cos_rest_client.endpoint_factory:
         class: Cos\RestClientBundle\Endpoint\EndpointFactory
-        public: false
+        public: true
 
     cos_rest_client.request_builder:
         class: Cos\RestClientBundle\Request\RequestBuilder
         arguments: ["@cos_rest_client.request_options"]
-        public: false
+        public: true
 
     cos_rest_client.request_executor:
         class: Cos\RestClientBundle\Request\RequestExecutor
         arguments: ["@cos_rest_client.guzzle.client"]
-        public: false
+        public: true
 
     cos_rest_client.request_executor.traceable:
         class: Cos\RestClientBundle\Request\TraceableRequestExecutor
         arguments: ["@cos_rest_client.request_executor", "@event_dispatcher"]
-        public: false
+        public: true
 
     cos_rest_client.guzzle.client:
         class: GuzzleHttp\Client
-        public: false
+        public: true
 
     cos_rest_client.annotation_reader.default:
         class: Doctrine\Common\Annotations\AnnotationReader
-        public: false
+        public: true
 
     cos_rest_client.rest_adapter:
         class: Cos\RestClientBundle\Adapter\RestAdapter
         arguments: ["@cos_rest_client.request_executor.traceable", "@cos_rest_client.endpoint_collection", "@cos_rest_client.request_builder"]
-        public: false
+        public: true
 
     cos_rest_client.proxy_factory:
         class: Cos\RestClientBundle\Factory\RestProxyFactory
